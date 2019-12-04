@@ -4,8 +4,8 @@ import javax.swing.JPanel;
 public class LeagueInvaders {
 JFrame frame;
 GamePanel panel = new GamePanel();
-static final int WIDTH = 500;
-static final int HEIGHT = 800;
+public static final int WIDTH = 500;
+public static final int HEIGHT = 800;
 	public static void main(String[] args) {
 	LeagueInvaders league = new LeagueInvaders();
 	league.setup();
@@ -14,9 +14,10 @@ static final int HEIGHT = 800;
 		frame = new JFrame();
 	}
 	void setup(){
+		frame.add(panel);
 		frame.setSize(WIDTH, HEIGHT);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(panel);
+		frame.addKeyListener(panel);
 	}
-}
+}  
