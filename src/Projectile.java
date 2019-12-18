@@ -7,7 +7,7 @@ public class Projectile extends GameObject{
 		this.speed = 10;
 	}
 	void update(){
-		y-=speed
+		y-=speed;
 	}
 	void draw(Graphics g) {
 		g.setColor(Color.YELLOW);
