@@ -23,6 +23,24 @@ void update(){
 }
 void draw(Graphics g){
 	rocket.draw(g);
+	for (int i = 0; i < Aliens.size(); i++) {
+		Aliens.get(i);
+	}
+	for (int i = 0; i < Projectiles.size(); i++) {
+		Projectiles.get(i);
+	}
 	
+}
+void purgeObjects() {
+	for (int i = 0; i < Aliens.size(); i++) {
+		if (Aliens.get(i).isActive == false) {
+			Aliens.remove(i);
+		}	
+	}
+	for (int i = 0; i < Projectiles.size(); i++) {
+		if (Projectiles.get(i).isActive == false) {
+			Projectiles.remove(i);
+		}
+	}
 }
 }
