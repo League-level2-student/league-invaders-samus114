@@ -7,6 +7,7 @@ public class Projectile extends GameObject{
 		this.speed = 10;
 	}
 	void update(){
+		super.update();
 		y-=speed;
 	}
 	void draw(Graphics g) {
