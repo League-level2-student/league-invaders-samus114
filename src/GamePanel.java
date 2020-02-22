@@ -47,7 +47,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		object.update();
-
+if (!rocket.isActive) {
+	currentState = END;
+}
 	}
 
 	void updateEndState() {
@@ -86,12 +88,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(subFont);
 		g.drawString("You killed enemies", 100, 200);
 		g.drawString("Press ENTER to restart", 80, 400);
+		object.getScore();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("action");
 		if (currentState == MENU) {
 			updateMenuState();
 		} else if (currentState == GAME) {
@@ -117,8 +119,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			} else {
 				currentState++;
 				if (currentState == GAME) {
-startGame();
-				} else if(currentState == END) {
+					startGame();
+				} else if (currentState == END) {
 					alienSpawn.stop();
 				}
 			}
