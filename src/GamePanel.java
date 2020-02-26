@@ -49,6 +49,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		object.update();
 if (!rocket.isActive) {
 	currentState = END;
+	alienSpawn.stop();
+	rocket = new Rocketship(250, 700, 50, 50);
+	object = new ObjectManager(rocket);
 }
 	}
 
@@ -86,8 +89,8 @@ if (!rocket.isActive) {
 		g.setFont(titleFont);
 		g.drawString("GAME OVER", 100, 100);
 		g.setFont(subFont);
-		g.drawString("You killed enemies", 100, 200);
-		g.drawString("Press ENTER to restart", 80, 400);
+		g.drawString("You killed " + object.getScore() + " enemies", 110, 200);
+		g.drawString("Press ENTER to restart", 90, 400);
 		object.getScore();
 	}
 
@@ -109,11 +112,11 @@ if (!rocket.isActive) {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
-
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			System.out.println(currentState);
 			if (currentState == END) {
 				currentState = MENU;
 			} else {
@@ -122,6 +125,8 @@ if (!rocket.isActive) {
 					startGame();
 				} else if (currentState == END) {
 					alienSpawn.stop();
+					rocket = new Rocketship(250, 700, 50, 50);
+					object = new ObjectManager(rocket);
 				}
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
